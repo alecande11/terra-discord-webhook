@@ -111,7 +111,7 @@ async function handleRequest() {
         color: 0xffffff,
         author: {
           name: 'Take a look at my source code on GitHub',
-          url: 'https://github.com/alecande11/terra-discord-webhook',
+          url: 'https://github.com/alecande11/terra-discord-webhook/blob/main/README.md#realtime-data',
           icon_url: 'https://github.githubassets.com/favicons/favicon-dark.png',
         },
       },
