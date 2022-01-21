@@ -1,4 +1,4 @@
-// Remember to add the vollowing Environment Variables to your cloudflare worker:
+// Remember to add the following Environment Variables to your cloudflare worker:
 // - WEBHOOK_URL: discord webhook url
 // - MESSAGE_ID: id of the message you want to edit
 // - LCD: url of the LCD (https://lcd.terra.dev)
