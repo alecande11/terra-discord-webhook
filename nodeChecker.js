@@ -19,8 +19,14 @@ const nodes = {
     ],
   },
   testnet: {
-    lcd: ['https://bombay-lcd.terra.dev', 'https://bombay.stakesystems.io'],
-    rpc: ['https://bombay.stakesystems.io:2053'],
+    lcd: [
+      'https://bombay-lcd.terra.dev', 
+      'https://bombay.stakesystems.io',
+    ],
+    rpc: [
+      'http://167.99.25.150:26657',
+      'https://bombay.stakesystems.io:2053',
+    ],
   },
 };
 
