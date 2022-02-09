@@ -1,4 +1,4 @@
-// Remember to add the vollowing Environment Variables to your cloudflare worker:
+// Remember to add the following Environment Variables to your cloudflare worker:
 // - WEBHOOK_URL: discord webhook url
 // - MESSAGE_ID: id of the message you want to edit
 
@@ -19,8 +19,14 @@ const nodes = {
     ],
   },
   testnet: {
-    lcd: ['https://bombay-lcd.terra.dev', 'https://bombay.stakesystems.io'],
-    rpc: ['https://bombay.stakesystems.io:2053'],
+    lcd: [
+      'https://bombay-lcd.terra.dev', 
+      'https://bombay.stakesystems.io',
+    ],
+    rpc: [
+      'http://167.99.25.150:26657',
+      'https://bombay.stakesystems.io:2053',
+    ],
   },
 };
 
@@ -67,7 +73,7 @@ async function testNode(url, type) {
         // end time
         const end = Date.now();
 
-        // timeour or http error
+        // timeout or http error
         if (!result || !result.ok) return { color: '🔴', status: 'DOWN', time: end - start };
 
         // parse data
@@ -130,7 +136,7 @@ async function handleSchedule(scheduledDate) {
           resultTestLcd +
           '\nRPC:\n' +
           resultTestRpc +
-          '\n```\n🟢 = ONLINE, 🟠 = NOT SYNCRONIZED, 🔴 = OFFLINE, ❓ = UNKNOWN\n' +
+          '\n```\n🟢 = ONLINE, 🟠 = NOT SYNCHRONIZED, 🔴 = OFFLINE, ❓ = UNKNOWN\n' +
           `\nUpdated <t:${Math.round(Date.now() / 1000)}:R>`,
         color: 34047,
       },
