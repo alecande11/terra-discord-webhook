@@ -78,6 +78,34 @@ async function handleRequest() {
     data.luna.price = parseFloat(response_data.exchange_rate).toFixed(2);
   })();
 
+  // GET aUST RATE
+  await (async () => {
+    const response = await fetch(LCD + '/wasm/contracts/terra1sepfj7s0aeg5967uxnfk4thzlerrsktkpelm5s/store?query_msg=%7B%20%20%20%22state%22%3A%20%7B%7D%20%7D');
+    const response_data = await response.json();
+
+    data.ust.aust_rate = parseFloat(response_data.result.prev_exchange_rate).toFixed(2);
+  })();
+
+  // GET ANCHOR APY
+  await (async () => {
+    const BLOCKS_PER_YEAR = 4656810;
+    const response = await fetch(LCD + '/wasm/contracts/terra1tmnqgvg567ypvsvk6rwsga3srp7e3lg6u0elp8/store?query_msg=%7B%22epoch_state%22%3A%7B%7D%7D');
+    const response_data = await response.json();
+
+    const blockYield = 1 + parseFloat(response_data.result.deposit_rate);
+
+    data.ust.anchor_apy = ((Math.pow(blockYield, BLOCKS_PER_YEAR) - 1) * 100).toFixed(2);
+  })();
+
+  // GET ANCHOR YIELD RESERVE
+  await (async () => {
+    const response = await fetch(LCD + '/bank/balances/terra1tmnqgvg567ypvsvk6rwsga3srp7e3lg6u0elp8');
+    const response_data = await response.json();
+    response_data.result.forEach(c => {
+      if(c.denom === 'uusd') data.ust.anchor_reserve = (parseInt(c.amount)/1_000_000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    })
+  })();
+
   // HEIGHT
   // columbus-5
   await (async () => {
@@ -124,7 +152,7 @@ async function handleRequest() {
         },
       },
       {
-        description: `The total supply is **${data.ust.supply} UST**`,
+        description: `The total supply is **${data.ust.supply} UST**, you can stake UST on Anchor and earn **${data.ust.anchor_apy}% APY**.\nAncor's yield reserves contain **${data.ust.anchor_reserve} UST** and 1 aUST = **${data.ust.aust_rate} UST**.`,
         color: 5814783,
         author: {
           name: 'TerraUSD - UST',
