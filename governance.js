@@ -36,9 +36,8 @@ async function handleRequest(request) {
     if (await GOV.get(p.id)) return
 
     const message = {
-      username: 'Terra Proposals',
-      avatar_url:
-        'https://assets.website-files.com/611153e7af981472d8da199c/618d703ee436c52a5a5951d4_favicon_32.png',
+      username: 'Terra Governance',
+      avatar_url: 'https://assets.candeago.dev/terra/png/terra_white_bg.png',
       content: '',
       embeds: [
         {
