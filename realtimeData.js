@@ -148,7 +148,7 @@ async function handleRequest() {
         color: 16766464,
         author: {
           name: 'LUNA',
-          icon_url: 'https://assets.terra.money/icon/60/Luna.png',
+          icon_url: 'https://assets.terra.money/icon/600/Luna.png',
         },
       },
       {
@@ -156,7 +156,7 @@ async function handleRequest() {
         color: 5814783,
         author: {
           name: 'TerraUSD - UST',
-          icon_url: 'https://assets.terra.money/icon/60/UST.png',
+          icon_url: 'https://assets.terra.money/icon/600/UST.png',
         },
       },
       {
@@ -177,8 +177,7 @@ async function handleRequest() {
         ],
         author: {
           name: 'Terra Blockchain',
-          icon_url:
-            'https://assets.website-files.com/611153e7af981472d8da199c/61117b476d11877a9638750e_Terra%20Opengraph.png',
+          icon_url: 'https://assets.candeago.dev/terra/png/terra.png',
         },
       },
     ],
