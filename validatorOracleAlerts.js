@@ -29,7 +29,9 @@ async function getMissedOracle() {
 
   const fileteredResults = json
     .filter((j) => !j.error)
-    .sort((a, b) => parseInt(a.height) - parseInt(b.height))
+    .sort((a, b) => parseInt(b.height) - parseInt(a.height))
+
+  console.log(fileteredResults)
 
   if (fileteredResults.length === 0) return { error: true }
 
@@ -63,7 +65,7 @@ async function handleRequest() {
         embeds: [
           {
             title: `The validator has missed **${
-              missed - oldMissed
+              missed - oldMissed 
             }** oracle votes`,
             color: missed - oldMissed > 2 ? 0xfd7c70 : 0xffa651,
           },
@@ -74,7 +76,7 @@ async function handleRequest() {
       await STATUS.put('missed', '' + missed)
     }
   }
-
+  
   if (message) {
     await fetch(WEBHOOK, {
       method: 'POST',
